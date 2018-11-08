@@ -1,0 +1,26 @@
+{
+  "name": "twitch-api",
+  "version": "1.0.0",
+  "description": "A script that polls Twitch's API and records data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keisenb/twitch-chat-analytics-api-script.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keisenb/twitch-chat-analytics-api-script/issues"
+  },
+  "homepage": "https://github.com/keisenb/twitch-chat-analytics-api-script#readme",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "axios": "^0.18.0",
+    "dotenv": "^6.1.0",
+    "mongodb": "^3.1.9",
+    "node-file-logger": "^0.9.5"
+  }
+}
