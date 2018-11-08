@@ -26,10 +26,10 @@ const mongoClient = new MongoClient(process.env.MONGO, { useNewUrlParser: true }
 
 setInterval(getViewers, 30000, process.env.STREAMER_ID, process.env.CLIENT_ID, process.env.USERNAME);
 
-async function storeViewers(viewers, chatters, type, game_id, started_at) {
+async function storeViewers(viewers, chatters, type, game_id, started_at, streamer_id, username) {
     try {
         const db = mongoClient.db(dbName);
-        var val = { viewer_count: viewers, chatter_count: chatters, type: type, game_id: game_id, started_at: started_at, recorded: new Date() };
+        var val = { viewer_count: viewers, chatter_count: chatters, type: type, game_id: game_id, started_at: started_at, recorded: new Date(), username: username, streamer_id: streamer_id };
         let r = await db.collection('viewers').insertOne(val);
         assert.equal(1, r.insertedCount);
     } catch (err) {
@@ -49,7 +49,7 @@ function getViewers(streamer_id, client_id, username) {
             }
         });
         if(result !== undefined) {
-            storeViewers(result.viewer_count, chatters.data.chatter_count, result.type, result.game_id, result.started_at);
+            storeViewers(result.viewer_count, chatters.data.chatter_count, result.type, result.game_id, result.started_at, streamer_id, username);
         } else {
             console.log('stream is not active...');
         }
@@ -58,3 +58,4 @@ function getViewers(streamer_id, client_id, username) {
         console.log(error);
       });
 }
+
