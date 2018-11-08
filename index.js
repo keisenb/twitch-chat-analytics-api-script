@@ -24,7 +24,7 @@ const mongoClient = new MongoClient(process.env.MONGO, { useNewUrlParser: true }
     console.log("Connected correctly to mongo server");
 })();
 
-setInterval(getViewers, 10000, process.env.STREAMER_ID, process.env.CLIENT_ID, process.env.USERNAME);
+setInterval(getViewers, 30000, process.env.STREAMER_ID, process.env.CLIENT_ID, process.env.USERNAME);
 
 async function storeViewers(viewers, chatters, type, game_id, started_at) {
     try {
